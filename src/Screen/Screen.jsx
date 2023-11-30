@@ -1,12 +1,10 @@
 import { useState } from "react";
 import Entrance from "../Components/Entrance/Entrance";
-
 function Screen(){
-    const [count, setCount] = useState(0)
-
+    const [player, setPlayer] = useState([])
     return (
       <>
-      < Entrance />
+      <Entrance player={player} setPlayer={setPlayer}/>
       </>
     )
 }

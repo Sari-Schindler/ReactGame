@@ -1,28 +1,25 @@
 import React, { useState } from 'react'
-import AddGamer from './AddGamer/AddGamer';
-
-
-const Entrance = ()=>
+import AddGamer from './AddGamer/AddGamer.jsx';
+const Entrance = (props)=>
 {
-
-   function showButtons()
-   {
-       return (
-        <>
-        <button onClick={checkKey()}>Add Gamer</button>
-        <button>start game</button>
-        </>
-       )
-   }
-function checkKey(){
-    return alert(  <AddGamer />);
-}
-
-
-
+    function addGamer()
+    {
+        return(
+            // <AddGamer player={props.player} setPlayer={props.setPlayer}/>
+            <p>jgvfug</p>
+        )
+    }
+    // function startGame()
+    // {
+    //     return(
+    //         <startGame player={props.player} setPlayer={props.setPlayer}/>
+    //     )
+    // }
     return(
         <>
-            <div >{showButtons()}</div>
+         <button onClick={()=>addGamer()}>Log In</button>
+         {/* <button onClick={<startGame player={props.player} setPlayer={props.setPlayer}/>}>to start game</button> */}
+        {/* <AddGamer player={props.player} setPlayer={props.setPlayer}/> */}
         </>
     )
 }
