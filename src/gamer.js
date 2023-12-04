@@ -1,8 +1,7 @@
 class gamer{
-    constructor(name,password)
+    constructor(name)
     {
         this.name=name;
-        this.password=password;
         this.isActive=false;//is the player play in the current game
         this.isAble=false;// Is the time of your gaming now
         this.score=0;
@@ -12,3 +11,5 @@ class gamer{
         this.level="copper";
     }
 }
+
+export default gamer

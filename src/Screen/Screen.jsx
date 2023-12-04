@@ -1,10 +1,13 @@
 import { useState } from "react";
-import Entrance from "../Components/Entrance/Entrance";
+import AddPlayer from '../Components/AddPlayer/AddPlayer.jsx'
 function Screen(){
-    const [player, setPlayer] = useState([])
+
+    const [allPlayers, setAllPlayers] = useState([])
+    const [currentPlayer, setCurrentPlayer] = useState([])
+    setCurrentPlayer()
     return (
       <>
-      <Entrance player={player} setPlayer={setPlayer}/>
+      <AddPlayer allPlayers={allPlayers} setAllPlayers={setAllPlayers} currentPlayer={currentPlayer} setCurrentPlayer={setCurrentPlayer}/>
       </>
     )
 }
