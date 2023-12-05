@@ -3,64 +3,45 @@ import gamer from "../../gamer"
 import ShowActiveBoards from "../ShowActiveBoards/ShowActiveBoards.jsx"
 
 const AddPlayer=(props)=>{
+    
+    // const allPlayers=(JSON.parse(localStorage.getItem('allPlayers'))|| []);
 
-    const allPlayers=(JSON.parse(localStorage.getItem('allPlayers'))|| []);
+    const arrGamers = JSON.parse(localStorage.getItem("allPlayers"));
+    const [allPlayers, setAllPlayers] = useState(arrGamers ? arrGamers : [])
+    const [isAddNew, setIsAddNew] = useState(false);
+   
 
-    function addPlayer(){
-        props.setAdd("true");
+    const addPlayer = () => {
         let newName = prompt("Please enter your name:");
-        while (newName == null || newName == "") {
+        if (newName == null || newName == "") {
             alert( "please enter valid name");
             newName = prompt("Please enter your name:");
         }
-        const newGamer = new gamer(newName);
-        newGamer.isActive = "true";
-        props.setCurrentPlayer(newGamer);
-        if (allPlayers == null || allPlayers.length == 0) {
-            allPlayers.push(newGamer);
-            localStorage.setItem("allPlayers" ,JSON.stringify(allPlayers));
-            localStorage.setItem("currentPlayer",JSON.stringify(newGamer));
-        }
-        else
-            isExsist(newGamer);
-
-    }
-
-    function isExsist(newGamer){
-
-        let isExist=false
-        allPlayers.map(e=>{
-            if(e.name===newGamer.name)
-            isExist=true
-        })
-        
-        if(isExist)
-        {
-            let playerDetailsprops = props.allPlayers.map((gamer)=>{
-            gamer.name==currentName;
+        let is_new_player = true;
+        setAllPlayers((allPlayers) => {
+            const play = allPlayers.map((player) => {
+                if (player.name === newName) {
+                    player.isActive = true;
+                    is_new_player = false;
+                }
+                return player
             })
-            props.setCurrentPlayer(playerDetailsprops)
-            alert("you already play once. good luck");
-        }
-        else{
-        // props.setAllPlyers(props.currentName)
-        allPlayers.push(newGamer);
-        localStorage.setItem("allPlayers" ,JSON.stringify(allPlayers));
-        localStorage.setItem("currentPlayer",JSON.stringify(newGamer));
-        }
+            localStorage.setItem("allPlayers" ,JSON.stringify(is_new_player ? [...allPlayers, new gamer(newName,true)] : play));
+            setIsAddNew(true);
+            return is_new_player ? [...allPlayers, new gamer(newName,true)] : play;
+        })
     }
-    
+
 
 
     return(
         <>
         <button onClick={()=>addPlayer()}>add player</button>
-        {/* {(props.add && <showActiveBoards add={props.add} setAdd={props.setAdd} />)} */}
-        <ShowActiveBoards allPlayers={props.allPlayers} />
-       
+        {isAddNew && <ShowActiveBoards isAddNew={isAddNew} setIsAddNew={setIsAddNew} allPlayers={allPlayers} setAllPlayers={setAllPlayers} />}
         </>
     )
 }
 
 
 export default AddPlayer
+// currentPlayers={currentPlayers} setCurrentPlayers={setCurrentPlayers} 
