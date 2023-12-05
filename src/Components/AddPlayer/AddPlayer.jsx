@@ -1,6 +1,7 @@
 import { useState } from "react"
 import gamer from "../../gamer"
 import ShowActiveBoards from "../ShowActiveBoards/ShowActiveBoards.jsx"
+import style from "../AddPlayer/AddPlayer.module.css"
 
 const AddPlayer=(props)=>{
     
@@ -9,26 +10,28 @@ const AddPlayer=(props)=>{
     const arrGamers = JSON.parse(localStorage.getItem("allPlayers"));
     const [allPlayers, setAllPlayers] = useState(arrGamers ? arrGamers : [])
     const [isAddNew, setIsAddNew] = useState(false);
+    const [currentPlayer, setCurrentPlayer]=useState(new gamer)
    
 
     const addPlayer = () => {
         let newName = prompt("Please enter your name:");
-        if (newName == null || newName == "") {
+        if (!newName) {
             alert( "please enter valid name");
             newName = prompt("Please enter your name:");
+            return;
         }
-        let is_new_player = true;
+        let isNewPlayer = true;
         setAllPlayers((allPlayers) => {
             const play = allPlayers.map((player) => {
                 if (player.name === newName) {
                     player.isActive = true;
-                    is_new_player = false;
+                    isNewPlayer = false;
                 }
                 return player
             })
-            localStorage.setItem("allPlayers" ,JSON.stringify(is_new_player ? [...allPlayers, new gamer(newName,true)] : play));
+            localStorage.setItem("allPlayers" ,JSON.stringify(isNewPlayer ? [...allPlayers, new gamer(newName,true)] : play));
             setIsAddNew(true);
-            return is_new_player ? [...allPlayers, new gamer(newName,true)] : play;
+            return isNewPlayer ? [...allPlayers, new gamer(newName,true)] : play;
         })
     }
 
@@ -37,7 +40,9 @@ const AddPlayer=(props)=>{
     return(
         <>
         <button onClick={()=>addPlayer()}>add player</button>
-        {isAddNew && <ShowActiveBoards isAddNew={isAddNew} setIsAddNew={setIsAddNew} allPlayers={allPlayers} setAllPlayers={setAllPlayers} />}
+        {/* {isAddNew && <ShowActiveBoards isAddNew={isAddNew} setIsAddNew={setIsAddNew} allPlayers={allPlayers} setAllPlayers={setAllPlayers} />} */}
+        <div className={style.allBoards}>{isAddNew && allPlayers.map(element => element.isActive? <ShowActiveBoards currentPlayer={element} /> :<></> )}
+        </div>
         </>
     )
 }
