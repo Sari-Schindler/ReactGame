@@ -4,9 +4,6 @@ import ShowActiveBoards from '../Components/ShowActiveBoards/ShowActiveBoards.js
 
 
 function Screen() {
-
-  
-
   return (
     <>
       <AddPlayer/>
