@@ -9,12 +9,25 @@ const AddPlayer=(props)=>{
     const arrGamers = JSON.parse(localStorage.getItem("allPlayers"));
     const [allPlayers, setAllPlayers] = useState(arrGamers ? arrGamers : [])
     const [isAddNew, setIsAddNew] = useState(false);
-    const [currentPlayer, setCurrentPlayer]=useState(new gamer)
+    // const [currentPlayer, setCurrentPlayer]=useState(new gamer)
     const [start,setStart] = useState(false)
+    // window.onload =function()
+    // {
+    //    allPlayers.array.forEach(player => {
+    //     player.isActive=false;
+    //    });
+    // }
+
+    function myFunction() {
+        alert("Page is loaded");
+      }
 
     function startGame()
     {
-      setStart(true);
+        if(isAddNew)
+          setStart(true);
+        else
+        alert("First enter a username");
     }
     const addPlayer = () => {
         let newName = prompt("Please enter your name:");
@@ -39,11 +52,16 @@ const AddPlayer=(props)=>{
     }
     return(
         <>
+        0545482174
+
+       { onload=myFunction()}
         <button onClick={()=>addPlayer()}>add player</button>
         {/* {isAddNew && <ShowActiveBoards isAddNew={isAddNew} setIsAddNew={setIsAddNew} allPlayers={allPlayers} setAllPlayers={setAllPlayers} />} */}
         <div className={style.allBoards}>{isAddNew && allPlayers.map(element => element.isActive? <ShowActiveBoards currentPlayer={element} /> :<></> )}
         <button onClick={()=>startGame()}>start game</button>
-        {start && <StartGame/>}
+        {start && <StartGame
+        setAllPlayers={setAllPlayers}
+        allPlayers={allPlayers}/>}
         </div>
         </>
     )
