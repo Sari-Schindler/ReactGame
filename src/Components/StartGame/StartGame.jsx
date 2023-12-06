@@ -3,39 +3,59 @@ import gamer from "../../gamer"
 
 const StartGame=(props) =>
 {
-    const{setAllPlayers,allPlayers }=props;
+    const {i,index,setIndex,setAllPlayers,allPlayers,isAble,currentPlayers,setCurrentPlayers }=props;
+ 
 
-
-
+    function allActivities(type){
+        setCurrentPlayers(currentPlayers.map((player,t)=>{
+            if(t==i)
+            {
+                player.steps++;
+                player.number++;
+            }
+            return player;
+               
+        }));
+        setIndex((i+1)%currentPlayers.length)
+    }
 
     function addOne()
     {
-
+        setCurrentPlayers(currentPlayers.map((player,t)=>{
+            if(t==i)
+            {
+                player.steps++;
+                player.number++;
+            }
+            return player;
+               
+        }));
+        setIndex((i+1)%currentPlayers.length)
     }
 
     
     function reduceOne()
     {
-    
+        
     }
 
     function timesTwo()
     {
-
+        setIndex((i+1)%currentPlayers.length)
     }
 
     function DivideByTwo()
     {
-
+        setIndex((i+1)%currentPlayers.length)
     }
-
+    
+    
     return(
         <>
-         <button onClick={()=>addOne()}>+1</button>
-         <button onClick={()=>reduceOne()}>-1</button>
-         <button onClick={()=>timesTwo()}>*2</button>
-         <button onClick={()=>DivideByTwo()}>/2</button>
-         {activePlayers()}
+         <button key={i} disabled={index!=i} onClick={()=>allActivities()}>+1</button>
+         <button key={i} disabled={index!=i} onClick={()=>allActivities()}>-1</button>
+         <button key={i} disabled={index!=i} onClick={()=>allActivities()}>*2</button>
+         <button key={i} disabled={index!=i} onClick={()=>allActivities()}>/2</button>
         </>
     )
 }

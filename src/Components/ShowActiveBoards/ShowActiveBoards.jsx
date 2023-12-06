@@ -3,22 +3,24 @@ import style from '../ShowActiveBoards/ShowActiveBoards.module.css'
 import StartGame from '../StartGame/StartGame'
 
 const ShowActiveBoards=(props)=>{
-  const[currentPlayers,setCurrentPlayers]=useState([]);
-  const{allPlayers,setAllPlayers,currentPlayer} = props;
-  
+  const{index,setIndex ,allPlayers,setAllPlayers,currentPlayer,currentPlayers,setCurrentPlayers,start,i} = props;
+        
         return(
             <>
                 <div className={style.w}>
                     <div>name: {currentPlayer.name}</div>
-                    <div>is able: {currentPlayer.isAble? true: false}</div>
                     <div>score: {currentPlayer.score}</div>
                     <div>steps: {currentPlayer.steps}</div>
                     <div>number: {currentPlayer.number}</div>
                     <div>score: {currentPlayer.score}</div>
                 </div>
-                {props.start && <StartGame
+                {start && <StartGame
                           setAllPlayers={setAllPlayers}
-                          allPlayers={allPlayers}/>}
+                          allPlayers={allPlayers}
+                          currentPlayers={currentPlayers}
+                          setCurrentPlayers={setCurrentPlayers}
+                          index={index} setIndex={setIndex}
+                          i={i}/>}
             </>
         )
 }

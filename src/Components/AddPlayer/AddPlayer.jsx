@@ -2,6 +2,7 @@ import { useState } from "react"
 import gamer from "../../gamer"
 import ShowActiveBoards from "../ShowActiveBoards/ShowActiveBoards.jsx"
 import style from "../AddPlayer/AddPlayer.module.css"
+import StartGame from "../StartGame/StartGame.jsx"
 
 const AddPlayer=(props)=>{
     // const allPlayers=(JSON.parse(localStorage.getItem('allPlayers'))|| []);
@@ -9,7 +10,8 @@ const AddPlayer=(props)=>{
     const [allPlayers, setAllPlayers] = useState(arrGamers ? arrGamers : [])
     const [isAddNew, setIsAddNew] = useState(false);
     const [start,setStart] = useState(false)
-    // const [currentPlayer, setCurrentPlayer]=useState(new gamer)
+    const [index,setIndex]=useState(0)
+    const {currentPlayers,setCurrentPlayers}=props;
 
     function startGame()
     {
@@ -33,9 +35,11 @@ const AddPlayer=(props)=>{
                     player.isActive = true;
                     isNewPlayer = false;
                 }
+                localStorage.setItem("allPlayers" ,JSON.stringify(isNewPlayer ? [...allPlayers, new gamer(newName,true)] : player));
+                setCurrentPlayers(isNewPlayer ?[...currentPlayers,new gamer(newName,true)] : [...currentPlayers,player])
                 return player
             })
-            localStorage.setItem("allPlayers" ,JSON.stringify(isNewPlayer ? [...allPlayers, new gamer(newName,true)] : play));
+           
             setIsAddNew(true);
             return isNewPlayer ? [...allPlayers, new gamer(newName,true)] : play;
         })
@@ -43,12 +47,12 @@ const AddPlayer=(props)=>{
     return(
         <>
         <button onClick={()=>addPlayer()}>add player</button>
-        {/* {isAddNew && <ShowActiveBoards isAddNew={isAddNew} setIsAddNew={setIsAddNew} allPlayers={allPlayers} setAllPlayers={setAllPlayers} />} */}
-        <div className={style.allBoards}>{isAddNew && allPlayers.map(element => element.isActive?
-             <ShowActiveBoards allPlayers={allPlayers} setAllPlayers={setAllPlayers} start={start} currentPlayer={element}/> :<></> )}
+        <div className={style.allBoards}>
+            {isAddNew && currentPlayers.map((element,i) => 
+             <ShowActiveBoards key={i} i={i} index={index} setIndex={setIndex} start={start} currentPlayer={element} currentPlayers={currentPlayers} setCurrentPlayers={setCurrentPlayers}/> )}
         </div>
         <button onClick={()=>startGame()}>start game</button>
-
+       
         </>
     )
 }
