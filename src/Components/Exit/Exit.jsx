@@ -4,6 +4,8 @@ const Exit=(props)=>{
     const {i,setAllPlayers,allPlayers,currentPlayers,setCurrentPlayers,setNext }=props;
     const ExitPlayer=currentPlayers[i];
     const updatePlayers=JSON.parse(localStorage.getItem("allPlayers"));
+    // const [, updateState] = useState();
+    // const forceUpdate = React.useCallback(() => updateState({}), []);
 
     function update()
     {
@@ -17,6 +19,8 @@ const Exit=(props)=>{
 
     function exit()
     {
+        
+
         updatePlayers.map((element)=>{
             if(element.name==ExitPlayer.name){
                 element.allScores.push(ExitPlayer.steps)
@@ -27,6 +31,7 @@ const Exit=(props)=>{
         })
         update()
         localStorage.setItem("allPlayers" ,JSON.stringify(updatePlayers));
+        // forceUpdate()
         setNext(false);
     }
 

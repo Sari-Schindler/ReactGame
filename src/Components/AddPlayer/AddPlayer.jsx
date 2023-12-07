@@ -12,18 +12,20 @@ const AddPlayer=(props)=>{
     const [isAddNew, setIsAddNew] = useState(false);
     const [start,setStart] = useState(false)
     const [index,setIndex]=useState(0)
-    const [isStartGame, setIsStartGame]=useState(false);
-
+    const [isAddPlayers, setIsAddPlayers]=useState(false);
+    const [iStartGame, setIStartGame]=useState(false);
     const {currentPlayers,setCurrentPlayers}=props;
 
 
     function startGame()
     {
-        if(isAddNew)
+        if(isAddNew){
           setStart(true);
+          setIStartGame(true);
+        }
         else
         alert("First enter a username");
-        setIsStartGame(true);
+        setIsAddPlayers(true);
     } 
    
     const addPlayer = () => {
@@ -51,14 +53,14 @@ const AddPlayer=(props)=>{
     }
     return(
         <>
-        {!(isStartGame)&&<button onClick={()=>addPlayer()}>add player</button>}
+        {!(isAddPlayers)&&<button onClick={()=>addPlayer()}>add player</button>}
         <div className={style.allBoards}>
             {isAddNew && currentPlayers.map((element,i) => 
              <ShowActiveBoards key={i} i={i} index={index} setIndex={setIndex} start={start} currentPlayer={element} currentPlayers={currentPlayers} setCurrentPlayers={setCurrentPlayers} allPlayers={allPlayers}/> )}
         </div>
         {/* <TopPlayers allPlayers={allPlayers} /> */}
 
-        <button onClick={()=>startGame()}>start game</button>
+        {!iStartGame && <button onClick={()=>startGame()}>start game</button>}
        
         </>
     )
