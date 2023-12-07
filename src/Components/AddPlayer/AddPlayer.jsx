@@ -3,6 +3,7 @@ import gamer from "../../gamer"
 import ShowActiveBoards from "../ShowActiveBoards/ShowActiveBoards.jsx"
 import style from "../AddPlayer/AddPlayer.module.css"
 import StartGame from "../StartGame/StartGame.jsx"
+import TopPlayers from "../TopPllayers/TopPlayers.jsx"
 
 const AddPlayer=(props)=>{
     // const allPlayers=(JSON.parse(localStorage.getItem('allPlayers'))|| []);
@@ -49,8 +50,10 @@ const AddPlayer=(props)=>{
         <button onClick={()=>addPlayer()}>add player</button>
         <div className={style.allBoards}>
             {isAddNew && currentPlayers.map((element,i) => 
-             <ShowActiveBoards key={i} i={i} index={index} setIndex={setIndex} start={start} currentPlayer={element} currentPlayers={currentPlayers} setCurrentPlayers={setCurrentPlayers}/> )}
+             <ShowActiveBoards key={i} i={i} index={index} setIndex={setIndex} start={start} currentPlayer={element} currentPlayers={currentPlayers} setCurrentPlayers={setCurrentPlayers} allPlayers={allPlayers}/> )}
         </div>
+        {/* <TopPlayers allPlayers={allPlayers} /> */}
+
         <button onClick={()=>startGame()}>start game</button>
        
         </>
