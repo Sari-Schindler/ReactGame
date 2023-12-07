@@ -6,6 +6,7 @@ import TopPlayers from "../TopPllayers/TopPlayers";
 const ShowActiveBoards=(props)=>{
   const{index,setIndex ,allPlayers,setAllPlayers,currentPlayer,currentPlayers,setCurrentPlayers,start,i} = props;
         
+  
         return(
             <>
                 <div className={style.w}>

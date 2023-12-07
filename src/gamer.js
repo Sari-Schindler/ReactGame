@@ -8,7 +8,7 @@ class gamer{
         this.steps=0;
         this.allScores=[];
         this.level="copper";
-        this.topScore=0;
+        this.topScore=1000;
     }
 }
 

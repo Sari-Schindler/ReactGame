@@ -47,7 +47,9 @@ const StartGame=(props) =>
                           allPlayers={allPlayers}
                           currentPlayers={currentPlayers}
                           setCurrentPlayers={setCurrentPlayers}
-                          i={i}/>}
+                          i={i}
+                          setNext={setNext}
+                          /> }
         </>
 
     )
