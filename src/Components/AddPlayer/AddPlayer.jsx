@@ -12,7 +12,10 @@ const AddPlayer=(props)=>{
     const [isAddNew, setIsAddNew] = useState(false);
     const [start,setStart] = useState(false)
     const [index,setIndex]=useState(0)
+    const [isStartGame, setIsStartGame]=useState(false);
+
     const {currentPlayers,setCurrentPlayers}=props;
+
 
     function startGame()
     {
@@ -20,6 +23,7 @@ const AddPlayer=(props)=>{
           setStart(true);
         else
         alert("First enter a username");
+        setIsStartGame(true);
     } 
    
     const addPlayer = () => {
@@ -47,7 +51,7 @@ const AddPlayer=(props)=>{
     }
     return(
         <>
-        <button onClick={()=>addPlayer()}>add player</button>
+        {!(isStartGame)&&<button onClick={()=>addPlayer()}>add player</button>}
         <div className={style.allBoards}>
             {isAddNew && currentPlayers.map((element,i) => 
              <ShowActiveBoards key={i} i={i} index={index} setIndex={setIndex} start={start} currentPlayer={element} currentPlayers={currentPlayers} setCurrentPlayers={setCurrentPlayers} allPlayers={allPlayers}/> )}
