@@ -30,7 +30,7 @@ const AddPlayer=(props)=>{
     const addPlayer = () => {
         let newName = prompt("Please enter your name:");
         if (!newName) {
-            alert( "please enter valid name");
+            alert( "Please enter valid name");
             newName = prompt("Please enter your name:");
             return;
         }
@@ -59,14 +59,12 @@ const AddPlayer=(props)=>{
             {isAddNew && currentPlayers.map((element,i) => 
              <ShowActiveBoards key={i} i={i} index={index} setIndex={setIndex} start={start} currentPlayer={element} currentPlayers={currentPlayers} setCurrentPlayers={setCurrentPlayers} allPlayers={allPlayers}/> )}
         </div>
-        {/* <TopPlayers allPlayers={allPlayers} /> */}
+        {iStartGame && <TopPlayers allPlayers={allPlayers}/>}
 
         {!iStartGame && <button onClick={()=>startGame()}>start game</button>}
-       
         </>
     )
 }
 
 
 export default AddPlayer
-// currentPlayers={currentPlayers} setCurrentPlayers={setCurrentPlayers} 
