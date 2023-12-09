@@ -19,8 +19,6 @@ const Exit=(props)=>{
 
     function exit()
     {
-        
-
         updatePlayers.map((element)=>{
             if(element.name==ExitPlayer.name){
                 element.allScores.push(ExitPlayer.steps)

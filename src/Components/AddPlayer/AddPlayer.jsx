@@ -6,7 +6,6 @@ import StartGame from "../StartGame/StartGame.jsx"
 import TopPlayers from "../TopPllayers/TopPlayers.jsx"
 
 const AddPlayer=(props)=>{
-    // const allPlayers=(JSON.parse(localStorage.getItem('allPlayers'))|| []);
     const arrGamers = JSON.parse(localStorage.getItem("allPlayers"));
     const [allPlayers, setAllPlayers] = useState(arrGamers ? arrGamers : [])
     const [isAddNew, setIsAddNew] = useState(false);
@@ -36,6 +35,7 @@ const AddPlayer=(props)=>{
             return;
         }
         let isNewPlayer = true;
+        
         setAllPlayers((allPlayers) => {
             const play = allPlayers.map((player) => {
                 if (player.name === newName) {
@@ -46,7 +46,8 @@ const AddPlayer=(props)=>{
                 setCurrentPlayers(isNewPlayer ?[...currentPlayers,new gamer(newName,true)] : [...currentPlayers,player])
                 return player
             })
-           
+            if(allPlayers.length==0)
+            setCurrentPlayers(isNewPlayer ?[...currentPlayers,new gamer(newName,true)] : [...currentPlayers,player])
             setIsAddNew(true);
             return isNewPlayer ? [...allPlayers, new gamer(newName,true)] : play;
         })

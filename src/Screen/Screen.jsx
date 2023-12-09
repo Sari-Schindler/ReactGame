@@ -15,4 +15,3 @@ function Screen() {
 
 export default Screen
 
-// isAddNew={isAddNew} setIsAddNew={setIsAddNew} allPlayers={allPlayers} setAllPlayers={setAllPlayers}

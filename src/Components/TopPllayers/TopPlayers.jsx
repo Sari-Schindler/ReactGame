@@ -4,9 +4,9 @@ import {useState} from "react"
 const TopPlayers=(props) =>
 {
      const{allPlayers} = props;
-     const max=["",0];
-     const min=["",0];
-     const mid=["",0];
+     let max=["",0];
+     let min=["",0];
+     let mid=["",0];
      const [topPlayers,setTopPlayers]=useState([max,mid,min]);
 
 
