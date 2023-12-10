@@ -8,7 +8,7 @@ const TopPlayers=(props) =>
      let min=[" ",120];
      let mid=[" ",120];
      const [topPlayers,setTopPlayers]=useState([max,mid,min]);
-     const [isShow, setIsShow] =useState(true)
+     const [isShow, setIsShow] =useState(false)
 
      function setTop()
      {
@@ -31,12 +31,12 @@ const TopPlayers=(props) =>
             }
         }))
         setTopPlayers([max,mid,min])
-        // setIsShow(true)
+        setIsShow(true)
      }
 
      return(
         <>
-          {/* <button onClick={()=>setTop()}>show the top player</button> */}
+          <button onClick={()=>setTop()}>show the top player</button>
            
            {/* {isShow && <div>Top players:</div>} */}
            {isShow && <div>first:{topPlayers[2]}</div>}
