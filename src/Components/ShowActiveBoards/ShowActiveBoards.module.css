@@ -1,5 +1,19 @@
-.w{
+
+
+.GamerBoard{
    margin-top: 20px;
    background-color: antiquewhite;
+   border:2px black solid;
+   border-radius: 25px;
+   width: 30%;
+   height: 200px;
+   margin: 2px;
+   font-family: cursive;
+
 }
 
+/* .gamerDetials{
+   justify-content: center;
+   align-content: center;
+   background-color: aquamarine;
+} */

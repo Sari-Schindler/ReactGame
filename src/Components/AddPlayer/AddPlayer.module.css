@@ -1,5 +1,14 @@
+#root{
+    margin: 0px;
+ }
+
 .allBoards{
+    display: flex;
     background-color: blue;
     justify-content: space-around;
-    width: 1000px;
+    align-content: space-around;
+    width: 1400px;
+    height: 500px;
+    padding-left: 0px;
+    margin-left: 0px;
 }

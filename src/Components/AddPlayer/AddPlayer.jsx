@@ -21,10 +21,10 @@ const AddPlayer=(props)=>{
         if(isAddNew){
           setStart(true);
           setIStartGame(true);
+          setIsAddPlayers(true);
         }
         else
         alert("First enter a username");
-        setIsAddPlayers(true);
     } 
    
     const addPlayer = () => {
@@ -46,8 +46,10 @@ const AddPlayer=(props)=>{
                 setCurrentPlayers(isNewPlayer ?[...currentPlayers,new gamer(newName,true)] : [...currentPlayers,player])
                 return player
             })
-            if(allPlayers.length==0)
-            setCurrentPlayers(isNewPlayer ?[...currentPlayers,new gamer(newName,true)] : [...currentPlayers,player])
+            if(allPlayers.length==0){
+                setCurrentPlayers(isNewPlayer ?[...currentPlayers,new gamer(newName,true)] : [...currentPlayers,player])
+                localStorage.setItem("allPlayers" ,JSON.stringify(isNewPlayer ? [...allPlayers, new gamer(newName,true)] : player));
+            }
             setIsAddNew(true);
             return isNewPlayer ? [...allPlayers, new gamer(newName,true)] : play;
         })
@@ -59,8 +61,8 @@ const AddPlayer=(props)=>{
             {isAddNew && currentPlayers.map((element,i) => 
              <ShowActiveBoards key={i} i={i} index={index} setIndex={setIndex} start={start} currentPlayer={element} currentPlayers={currentPlayers} setCurrentPlayers={setCurrentPlayers} allPlayers={allPlayers}/> )}
         </div>
-        {/* <TopPlayers allPlayers={allPlayers} /> */}
-
+        {iStartGame && <TopPlayers allPlayers={allPlayers}/>}
+        
         {!iStartGame && <button onClick={()=>startGame()}>start game</button>}
        
         </>

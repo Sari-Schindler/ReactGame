@@ -9,12 +9,18 @@ const Exit=(props)=>{
 
     function update()
     {
-        setCurrentPlayers(currentPlayers.filter((player)=>{
-            if(player.name!=ExitPlayer.name){
-                return player;
-            }
-        }))
-        
+        // setCurrentPlayers(currentPlayers.filter((player)=>{
+        //     if(player.name!=ExitPlayer.name){
+        //         return player;
+        //     }
+        // }))
+        setCurrentPlayers(currentPlayers.filter((element)=>{
+            if(element.name!=ExitPlayer.name)
+                return element
+            else
+                (currentPlayers.slice(i,-1))
+        })
+        )
     }
 
     function exit()
@@ -31,13 +37,17 @@ const Exit=(props)=>{
         localStorage.setItem("allPlayers" ,JSON.stringify(updatePlayers));
         // forceUpdate()
         setNext(false);
+        if(currentPlayers.length == 1)
+            (alert("you finish the game"));
     }
 
 
     function continuePlaying(){
+        let allScoresTemp=[];
         updatePlayers.map((g)=>{
             if(g.name==ExitPlayer.name){
                 g.allScores.push(ExitPlayer.steps)
+                allScoresTemp.push(`${g.allScores} `)
                 if(ExitPlayer.steps<g.topScore)
                     g.topScore=ExitPlayer.steps;
             }   })
@@ -46,6 +56,7 @@ const Exit=(props)=>{
             if(player.name==ExitPlayer.name){
                 player.steps=0;
                 player.number=Math.floor(Math.random() * 100);
+                player.allScores=allScoresTemp;
             }
             return player;
         }))

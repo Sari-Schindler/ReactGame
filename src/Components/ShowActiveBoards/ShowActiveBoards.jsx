@@ -9,14 +9,13 @@ const ShowActiveBoards=(props)=>{
   
         return(
             <>
-                <div className={style.w}>
+            <div className={style.GamerBoard}>
                     <div>name: {currentPlayer.name}</div>
                     <div>is able:{i==index ? "true":"false"}</div>
-                    <div>score: {currentPlayer.score}</div>
                     <div>steps: {currentPlayer.steps}</div>
                     <div>number: {currentPlayer.number}</div>
-                    <div>score: {currentPlayer.score}</div>
-                </div>
+                    <div>score: {currentPlayer.allScores}</div>
+                <div>
                 {start && <StartGame
                           setAllPlayers={setAllPlayers}
                           allPlayers={allPlayers}
@@ -26,7 +25,8 @@ const ShowActiveBoards=(props)=>{
                           i={i}/> 
                           } 
                 {/* {start&& <TopPlayers allPlayers={allPlayers} /> } */}
-                
+                </div>
+            </div>
             </>
         )
 }
