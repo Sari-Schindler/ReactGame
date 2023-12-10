@@ -68,7 +68,6 @@ const Exit=(props)=>{
         <div>
             <button onClick={()=>exit()}>Exit</button>
             <button onClick={()=>continuePlaying()}>continue playing</button>
-
         </div>
         </>
     )
