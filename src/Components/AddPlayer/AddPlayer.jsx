@@ -13,7 +13,7 @@ const AddPlayer=(props)=>{
     const [isAddPlayers, setIsAddPlayers]=useState(false);
     const [iStartGame, setIStartGame]=useState(false);
     const {currentPlayers,setCurrentPlayers}=props;
-
+    const r=0;
 
     function startGame()
     {
