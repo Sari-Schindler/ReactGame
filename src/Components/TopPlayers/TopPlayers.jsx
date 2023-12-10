@@ -4,7 +4,10 @@ import style from '../TopPlayers/TopPlayers.module.css'
 const TopPlayers=(props) =>
 {
      const{allPlayers} = props;
-     const {min,setMin,mid,setMid,max,setMax, isShow}=props;
+     const [min,setMin] = useState([' ',120])
+     const [mid,setMid] = useState([" ",120])
+     const [max,setMax] = useState([' ',120])
+     const {isShow}=props;
 
      function setTop()
      {

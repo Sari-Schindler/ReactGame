@@ -13,9 +13,7 @@ const AddPlayer=(props)=>{
     const [isAddPlayers, setIsAddPlayers]=useState(false);
     const [iStartGame, setIStartGame]=useState(false);
     const {currentPlayers,setCurrentPlayers}=props;
-    const [min,setMin] = useState([' ',120])
-    const [mid,setMid] = useState([" ",120])
-    const [max,setMax] = useState([' ',120])
+
 
 
     let isShow=false;
@@ -70,7 +68,7 @@ const AddPlayer=(props)=>{
             {isAddNew && currentPlayers.map((element,i) => 
              <ShowActiveBoards key={i} i={i} index={index} setIndex={setIndex} start={start} currentPlayer={element} currentPlayers={currentPlayers} setCurrentPlayers={setCurrentPlayers} allPlayers={allPlayers}/> )}
         </div>
-        {iStartGame && <TopPlayers min={min} setMin={setMin} mid={mid} setMid={setMid} max={max} setMax={setMax} allPlayers={allPlayers} isShow/>}        
+        {iStartGame && <TopPlayers allPlayers={allPlayers} isShow/>}        
 
         {!iStartGame && <button className={style.startGameBtn} onClick={()=>startGame()}>start game</button>}
         </>
