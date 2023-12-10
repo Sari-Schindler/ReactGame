@@ -13,7 +13,12 @@ const AddPlayer=(props)=>{
     const [isAddPlayers, setIsAddPlayers]=useState(false);
     const [iStartGame, setIStartGame]=useState(false);
     const {currentPlayers,setCurrentPlayers}=props;
-    const r=0;
+    const [min,setMin] = useState([' ',120])
+    const [mid,setMid] = useState([" ",120])
+    const [max,setMax] = useState([' ',120])
+
+
+    let isShow=false;
 
     function startGame()
     {
@@ -21,6 +26,7 @@ const AddPlayer=(props)=>{
           setStart(true);
           setIStartGame(true);
           setIsAddPlayers(true);
+          isShow=true;
         }
         else
         alert("First enter a username");
@@ -36,13 +42,17 @@ const AddPlayer=(props)=>{
         let isNewPlayer = true;
         
         setAllPlayers((allPlayers) => {
+            isNewPlayer=true;
             const play = allPlayers.map((player) => {
                 if (player.name === newName) {
                     player.isActive = true;
                     isNewPlayer = false;
                 }
-                localStorage.setItem("allPlayers" ,JSON.stringify(isNewPlayer ? [...allPlayers, new gamer(newName,true)] : player));
-                setCurrentPlayers(isNewPlayer ?[...currentPlayers,new gamer(newName,true)] : [...currentPlayers,player])
+                let isCurrentPlayer=currentPlayers.find((current) => current.name == newName )
+                if(!isCurrentPlayer){
+                    localStorage.setItem("allPlayers" ,JSON.stringify(isNewPlayer ? [...allPlayers, new gamer(newName,true)] : player));
+                    setCurrentPlayers(isNewPlayer ?[...currentPlayers,new gamer(newName,true)] : [...currentPlayers,player])
+                }
                 return player
             })
             if(allPlayers.length==0){
@@ -60,7 +70,7 @@ const AddPlayer=(props)=>{
             {isAddNew && currentPlayers.map((element,i) => 
              <ShowActiveBoards key={i} i={i} index={index} setIndex={setIndex} start={start} currentPlayer={element} currentPlayers={currentPlayers} setCurrentPlayers={setCurrentPlayers} allPlayers={allPlayers}/> )}
         </div>
-        {iStartGame && <TopPlayers allPlayers={allPlayers}/>}        
+        {iStartGame && <TopPlayers min={min} setMin={setMin} mid={mid} setMid={setMid} max={max} setMax={setMax} allPlayers={allPlayers} isShow/>}        
 
         {!iStartGame && <button className={style.startGameBtn} onClick={()=>startGame()}>start game</button>}
         </>

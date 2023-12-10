@@ -4,45 +4,35 @@ import style from '../TopPlayers/TopPlayers.module.css'
 const TopPlayers=(props) =>
 {
      const{allPlayers} = props;
-     let max=[" ",120];
-     let min=[" ",120];
-     let mid=[" ",120];
-     const [topPlayers,setTopPlayers]=useState([max,mid,min]);
-     const [isShow, setIsShow] =useState(false)
+     const {min,setMin,mid,setMid,max,setMax, isShow}=props;
 
      function setTop()
      {
            (allPlayers.map((player) =>{
             if(player.topScore<min[1]){
-                mid[0]=min[0]
-                mid[1]=min[1]
-                min[0]=` ${player.name}: `
-                min[1]=player.topScore
+                setMid(min)
+                setMin([` ${player.name}: `,player.topScore])
             }
             else if(player.topScore<mid[1]){
-                max[0]=mid[0]
-                max[1]=mid[1]
-                mid[0]=` ${player.name}: `
-                mid[1]=player.topScore
+                setMax(mid)
+                setMid([` ${player.name}: `,player.topScore])
             }
             else if(player.topScore<max[1]){
-                max[0]=` ${player.name}: `
-                max[1]=player.topScore
+                setMax([` ${player.name}: `,player.topScore])
             }
         }))
-        setTopPlayers([max,mid,min])
-        setIsShow(true)
      }
 
      return(
         <>
-          <button className={style.showTopPlayers} onClick={()=>setTop()}>show the top player</button>
-           
-           {/* {isShow && <div>Top players:</div>} */}
+          {/* <button className={style.showTopPlayers} onClick={()=>setTop()}>show the top player</button> */}
+           {
+            isShow && setTop()
+           }
            <div className={style.topPlayersP}>
-           {isShow && <div>first:{topPlayers[2]}</div>}
-           {isShow &&<div>second:{topPlayers[1]}</div>}
-           {isShow &&<div>third:{topPlayers[0]}</div>}
+           {isShow && <div>first:{min}</div>}
+           {isShow &&<div>second:{mid}</div>}
+           {isShow &&<div>third:{max}</div>}
            </div>
         </>
      )

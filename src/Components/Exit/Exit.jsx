@@ -9,11 +9,6 @@ const Exit=(props)=>{
 
     function update()
     {
-        // setCurrentPlayers(currentPlayers.filter((player)=>{
-        //     if(player.name!=ExitPlayer.name){
-        //         return player;
-        //     }
-        // }))
         setCurrentPlayers(currentPlayers.filter((element)=>{
             if(element.name!=ExitPlayer.name)
                 return element
