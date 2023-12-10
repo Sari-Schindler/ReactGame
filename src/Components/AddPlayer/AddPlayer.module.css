@@ -1,14 +1,32 @@
-#root{
-    margin: 0px;
- }
+.addPlayerBtn{
+    margin-top: 5px;
+    padding: 15px;
+    margin-top: 10%;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 30px;
+    color: white;
+    background-color:unset;
+    border-color: white;
+    font-weight: bold;
+}
+
+.startGameBtn{
+    margin-top: 5px;
+    padding: 15px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 30px;
+    color: white;
+    background-color:unset;
+    border-color: green;
+    border-color: white;
+    font-weight: bold;
+}
 
 .allBoards{
     display: flex;
-    background-color: blue;
     justify-content: space-around;
     align-content: space-around;
     width: 1400px;
-    height: 500px;
-    padding-left: 0px;
-    margin-left: 0px;
+    height: fit-content;
+    margin-top: 100px;
 }

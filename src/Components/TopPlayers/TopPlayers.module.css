@@ -1,0 +1,19 @@
+.showTopPlayers{
+    margin-top: 5px;
+    padding: 15px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 30px;
+    color: white;
+    background-color:unset;
+    border-color: green;
+    border-color: white;
+    font-weight: bold;
+}
+
+.topPlayersP{
+    font-family: cursive;
+    font-size: 25px;
+    color: purple;
+    font-weight: bold;
+
+}

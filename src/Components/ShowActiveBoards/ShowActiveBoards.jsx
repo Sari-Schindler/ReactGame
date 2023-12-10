@@ -1,7 +1,7 @@
 import { useState } from "react";
 import style from '../ShowActiveBoards/ShowActiveBoards.module.css'
 import StartGame from '../StartGame/StartGame'
-import TopPlayers from "../TopPllayers/TopPlayers";
+import TopPlayers from "../TopPlayers/TopPlayers";
 
 const ShowActiveBoards=(props)=>{
   const{index,setIndex ,allPlayers,setAllPlayers,currentPlayer,currentPlayers,setCurrentPlayers,start,i} = props;
@@ -11,7 +11,7 @@ const ShowActiveBoards=(props)=>{
             <>
             <div className={style.GamerBoard}>
                     <div>name: {currentPlayer.name}</div>
-                    <div>is able:{i==index ? "true":"false"}</div>
+                    <div className={style.isAble}>is able:<div className={i==index? style.able: style.disable}>{i==index ? "true":"false"}</div></div>
                     <div>steps: {currentPlayer.steps}</div>
                     <div>number: {currentPlayer.number}</div>
                     <div>score: {currentPlayer.allScores}</div>

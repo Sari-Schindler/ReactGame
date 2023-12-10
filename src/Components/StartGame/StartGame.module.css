@@ -1,0 +1,12 @@
+.operationsBtns{
+    padding: 0.5px;
+    margin: 1px;
+}
+
+.operatorBtn{
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    margin: 1px;
+}

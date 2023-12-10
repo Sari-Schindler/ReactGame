@@ -2,8 +2,7 @@ import { useState } from "react"
 import gamer from "../../gamer"
 import ShowActiveBoards from "../ShowActiveBoards/ShowActiveBoards.jsx"
 import style from "../AddPlayer/AddPlayer.module.css"
-import StartGame from "../StartGame/StartGame.jsx"
-import TopPlayers from "../TopPllayers/TopPlayers.jsx"
+import TopPlayers from "../TopPlayers/TopPlayers.jsx"
 
 const AddPlayer=(props)=>{
     const arrGamers = JSON.parse(localStorage.getItem("allPlayers"));
@@ -56,14 +55,14 @@ const AddPlayer=(props)=>{
     }
     return(
         <>
-        {!(isAddPlayers)&&<button onClick={()=>addPlayer()}>add player</button>}
+        {!(isAddPlayers)&&<button className={style.addPlayerBtn} onClick={()=>addPlayer()}>add player</button>}
         <div className={style.allBoards}>
             {isAddNew && currentPlayers.map((element,i) => 
              <ShowActiveBoards key={i} i={i} index={index} setIndex={setIndex} start={start} currentPlayer={element} currentPlayers={currentPlayers} setCurrentPlayers={setCurrentPlayers} allPlayers={allPlayers}/> )}
         </div>
         {iStartGame && <TopPlayers allPlayers={allPlayers}/>}        
 
-        {!iStartGame && <button onClick={()=>startGame()}>start game</button>}
+        {!iStartGame && <button className={style.startGameBtn} onClick={()=>startGame()}>start game</button>}
         </>
     )
 }

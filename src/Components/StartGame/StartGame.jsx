@@ -1,7 +1,8 @@
 import {useState} from "react"
 import gamer from "../../gamer"
-import TopPlayers from '../TopPllayers/TopPlayers.jsx'
+import TopPlayers from '../TopPlayers/TopPlayers.jsx'
 import Exit from '../Exit/Exit.jsx'
+import style from '../StartGame/startGame.module.css'
 
 const StartGame=(props) =>
 {
@@ -39,10 +40,12 @@ const StartGame=(props) =>
     
     return(
         <>
-         <button key={i} disabled={index!=i} onClick={()=>allActivities("+1")}>+1</button>
-         <button key={i} disabled={index!=i} onClick={()=>allActivities("-1")}>-1</button>
-         <button key={i} disabled={index!=i} onClick={()=>allActivities("*2")}>*2</button>
-         <button key={i} disabled={index!=i} onClick={()=>allActivities("/2")}>/2</button>
+        <div className={style.operationsBtns}>
+         <button className={style.operatorBtn} key={i} disabled={index!=i} onClick={()=>allActivities("+1")}>+1</button>
+         <button className={style.operatorBtn} key={i} disabled={index!=i} onClick={()=>allActivities("-1")}>-1</button>
+         <button className={style.operatorBtn} key={i} disabled={index!=i} onClick={()=>allActivities("*2")}>*2</button>
+         <button className={style.operatorBtn} key={i} disabled={index!=i} onClick={()=>allActivities("/2")}>/2</button>
+         </div>
          {next && <Exit setAllPlayers={setAllPlayers}
                           allPlayers={allPlayers}
                           currentPlayers={currentPlayers}

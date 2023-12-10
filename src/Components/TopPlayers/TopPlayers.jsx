@@ -1,5 +1,5 @@
 import {useState} from "react"
-
+import style from '../TopPlayers/TopPlayers.module.css'
 
 const TopPlayers=(props) =>
 {
@@ -36,12 +36,14 @@ const TopPlayers=(props) =>
 
      return(
         <>
-          <button onClick={()=>setTop()}>show the top player</button>
+          <button className={style.showTopPlayers} onClick={()=>setTop()}>show the top player</button>
            
            {/* {isShow && <div>Top players:</div>} */}
+           <div className={style.topPlayersP}>
            {isShow && <div>first:{topPlayers[2]}</div>}
            {isShow &&<div>second:{topPlayers[1]}</div>}
            {isShow &&<div>third:{topPlayers[0]}</div>}
+           </div>
         </>
      )
 }
