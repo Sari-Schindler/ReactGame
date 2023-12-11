@@ -1,4 +1,5 @@
 .showTopPlayers{
+    display: flex;
     margin-top: 5px;
     padding: 15px;
     font-family: 'Courier New', Courier, monospace;
@@ -8,6 +9,8 @@
     border-color: green;
     border-color: white;
     font-weight: bold;
+    justify-content: end;
+    justify-content: end;
 }
 
 .topPlayersP{
@@ -15,5 +18,7 @@
     font-size: 25px;
     color: purple;
     font-weight: bold;
+    justify-content: end;
+    display: flex;
 
 }

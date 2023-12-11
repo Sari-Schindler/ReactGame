@@ -12,10 +12,10 @@ const AddPlayer=(props)=>{
     const [index,setIndex]=useState(0)
     const [isAddPlayers, setIsAddPlayers]=useState(false);
     const [iStartGame, setIStartGame]=useState(false);
-    const {currentPlayers,setCurrentPlayers}=props;
     const [min,setMin] = useState([' ',120])
     const [mid,setMid] = useState([" ",120])
     const [max,setMax] = useState([' ',120])
+    const [currentPlayers,setCurrentPlayers] = useState([])
 
 
     let isShow=false;
@@ -40,21 +40,23 @@ const AddPlayer=(props)=>{
             return;
         }
         let isNewPlayer = true;
-        
+        let wantedGamer;
         setAllPlayers((allPlayers) => {
             isNewPlayer=true;
             const play = allPlayers.map((player) => {
                 if (player.name === newName) {
-                    player.isActive = true;
                     isNewPlayer = false;
-                }
-                let isCurrentPlayer=currentPlayers.find((current) => current.name == newName )
-                if(!isCurrentPlayer){
-                    localStorage.setItem("allPlayers" ,JSON.stringify(isNewPlayer ? [...allPlayers, new gamer(newName,true)] : player));
-                    setCurrentPlayers(isNewPlayer ?[...currentPlayers,new gamer(newName,true)] : [...currentPlayers,player])
+                    wantedGamer=player;
                 }
                 return player
             })
+
+            let isCurrentPlayer=currentPlayers.find((current) => current.name == newName )
+            if(!isCurrentPlayer){
+                localStorage.setItem("allPlayers" ,JSON.stringify(isNewPlayer ? [...allPlayers, new gamer(newName,true)] : allPlayers));
+                setCurrentPlayers(isNewPlayer ?[...currentPlayers,new gamer(newName,true)] : [...currentPlayers,wantedGamer])
+            }
+
             if(allPlayers.length==0){
                 setCurrentPlayers(isNewPlayer ?[...currentPlayers,new gamer(newName,true)] : [...currentPlayers,player])
                 localStorage.setItem("allPlayers" ,JSON.stringify(isNewPlayer ? [...allPlayers, new gamer(newName,true)] : player));
@@ -67,10 +69,11 @@ const AddPlayer=(props)=>{
         <>
         {!(isAddPlayers)&&<button className={style.addPlayerBtn} onClick={()=>addPlayer()}>add player</button>}
         <div className={style.allBoards}>
-            {isAddNew && currentPlayers.map((element,i) => 
-             <ShowActiveBoards key={i} i={i} index={index} setIndex={setIndex} start={start} currentPlayer={element} currentPlayers={currentPlayers} setCurrentPlayers={setCurrentPlayers} allPlayers={allPlayers}/> )}
+            {isAddNew ? currentPlayers.map((element,i) => (
+             <ShowActiveBoards key={i} i={i} index={index} setIndex={setIndex} start={start} currentPlayer={element} currentPlayers={currentPlayers} setCurrentPlayers={setCurrentPlayers} allPlayers={allPlayers}/> 
+             )) : null}
         </div>
-        {iStartGame && <TopPlayers min={min} setMin={setMin} mid={mid} setMid={setMid} max={max} setMax={setMax} allPlayers={allPlayers} isShow/>}        
+        {isAddNew && <TopPlayers min={min} setMin={setMin} mid={mid} setMid={setMid} max={max} setMax={setMax} allPlayers={allPlayers} isShow/>}
 
         {!iStartGame && <button className={style.startGameBtn} onClick={()=>startGame()}>start game</button>}
         </>

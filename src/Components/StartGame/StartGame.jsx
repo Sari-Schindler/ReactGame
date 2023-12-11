@@ -41,18 +41,21 @@ const StartGame=(props) =>
     return(
         <>
         <div className={style.operationsBtns}>
-         <button className={style.operatorBtn} key={i} disabled={index!=i} onClick={()=>allActivities("+1")}>+1</button>
-         <button className={style.operatorBtn} key={i} disabled={index!=i} onClick={()=>allActivities("-1")}>-1</button>
-         <button className={style.operatorBtn} key={i} disabled={index!=i} onClick={()=>allActivities("*2")}>*2</button>
-         <button className={style.operatorBtn} key={i} disabled={index!=i} onClick={()=>allActivities("/2")}>/2</button>
+            <button className={style.operatorBtn} disabled={index!=i} onClick={()=>allActivities("+1")}>+1</button>
+            <button className={style.operatorBtn} disabled={index!=i} onClick={()=>allActivities("-1")}>-1</button>
+            <button className={style.operatorBtn} disabled={index!=i} onClick={()=>allActivities("*2")}>*2</button>
+            <button className={style.operatorBtn} disabled={index!=i} onClick={()=>allActivities("/2")}>/2</button>
+            <div className={style.operationsBtns}>
+                {(currentPlayers[i].number ==100) && <Exit setAllPlayers={setAllPlayers}
+                                allPlayers={allPlayers}
+                                currentPlayers={currentPlayers}
+                                setCurrentPlayers={setCurrentPlayers}
+                                i={i}
+                                setNext={setNext}
+                        /> }
+            </div>
          </div>
-         {next && <Exit setAllPlayers={setAllPlayers}
-                          allPlayers={allPlayers}
-                          currentPlayers={currentPlayers}
-                          setCurrentPlayers={setCurrentPlayers}
-                          i={i}
-                          setNext={setNext}
-                          /> }
+
         </>
 
     )
