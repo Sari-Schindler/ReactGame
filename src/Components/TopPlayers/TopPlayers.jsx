@@ -13,18 +13,13 @@ const TopPlayers = (props) => {
                 _max = _mid;
                 _mid = _min;
                 _min = [` ${player.name}: `, player.AverageSteps]
-                // setMid(min)
-                // setMin([` ${player.name}: `,player.topScore])
             }
             else if (player.AverageSteps < _mid[1]) {
                 _max = _mid;
                 _mid = [` ${player.name}: `, player.AverageSteps]
-                // setMax(mid)
-                // setMid([` ${player.name}: `,player.topScore])
             }
             else if (player.AverageSteps < _max[1]) {
                 _max = [` ${player.name}: `, player.AverageSteps]
-                // setMax([` ${player.name}: `,player.topScore])
             }
         }))
         setMin(_min)
@@ -39,13 +34,12 @@ const TopPlayers = (props) => {
 
     return (
         <>
-            {/* <button className={style.showTopPlayers} onClick={()=>setTop()}>show the top player</button> */}
             <div className={style.TopDiv}>
                 <p className={style.TopPlayersHeader}>Top Players               -</p>
                 <div className={style.topPlayersP}>
-                    {isShow && <div className={style.first}>first:{min},&nbsp;</div>}
-                    {isShow && <div className={style.second}>second:{mid},&nbsp;</div>}
-                    {isShow && <div className={style.third}>third:{max}</div>}
+                    {isShow && <div className={style.first}> first: {min[1]!=120? min: ' no '}</div>}
+                    {isShow && <div className={style.second}> second: {mid[1]!=120? mid : ` no `}</div>}
+                    {isShow &&  <div className={style.third}> third: {max[1]!=120? max : ' no '}</div>}
                 </div>
             </div>
         </>

@@ -1,13 +1,9 @@
-import {useState} from "react"
-import gamer from "../../gamer"
-import TopPlayers from '../TopPlayers/TopPlayers.jsx'
-import Exit from '../Exit/Exit.jsx'
+import EndGame from '../EndGame/EndGame.jsx'
 import style from '../StartGame/startGame.module.css'
 
 const StartGame=(props) =>
 {
-    const {i,index,setIndex,setAllPlayers,allPlayers,isAble,currentPlayers,setCurrentPlayers }=props;
-    const [next,setNext]=useState(false);
+    const {i,index,setIndex,setAllPlayers,allPlayers,currentPlayers,setCurrentPlayers}=props;
     function allActivities(operator){
         setCurrentPlayers(currentPlayers.map((player,t)=>{
             if(t==i && player.number!=100)
@@ -28,8 +24,6 @@ const StartGame=(props) =>
                 }
                 player.steps++;
                 player.isAble=false;
-                if(player.number ==100)
-                   setNext(true);
             }
             return player;
                
@@ -46,12 +40,11 @@ const StartGame=(props) =>
             <button className={style.operatorBtn} disabled={index!=i} onClick={()=>allActivities("*2")}>*2</button>
             <button className={style.operatorBtn} disabled={index!=i} onClick={()=>allActivities("/2")}>/2</button>
             <div className={style.operationsBtns}>
-                {(currentPlayers[i].number ==100) && <Exit setAllPlayers={setAllPlayers}
+                {(currentPlayers[i].number ==100) && <EndGame setAllPlayers={setAllPlayers}
                                 allPlayers={allPlayers}
                                 currentPlayers={currentPlayers}
                                 setCurrentPlayers={setCurrentPlayers}
                                 i={i}
-                                setNext={setNext}
                         /> }
             </div>
          </div>

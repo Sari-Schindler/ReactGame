@@ -1,7 +1,5 @@
-import { useState } from "react";
 import style from '../ShowActiveBoards/ShowActiveBoards.module.css'
 import StartGame from '../StartGame/StartGame'
-import TopPlayers from "../TopPlayers/TopPlayers";
 
 const ShowActiveBoards=(props)=>{
   const{index,setIndex ,allPlayers,setAllPlayers,currentPlayer,currentPlayers,setCurrentPlayers,start,i} = props;
@@ -24,7 +22,6 @@ const ShowActiveBoards=(props)=>{
                           index={index} setIndex={setIndex}
                           i={i}/> 
                           } 
-                {/* {start&& <TopPlayers allPlayers={allPlayers} /> } */}
                 </div>
             </div>
             </>

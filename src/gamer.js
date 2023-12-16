@@ -7,9 +7,7 @@ class gamer{
         this.number=Math.floor(Math.random() * 100);
         this.steps=0;
         this.allScores=[];
-        this.level="copper";
         this.AverageSteps=1000;
-        this.topScore=1000;
     }
 }
 

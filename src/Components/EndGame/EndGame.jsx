@@ -1,14 +1,14 @@
 import { useState } from "react";
-import style from '../Exit/Exit.module.css'
+import style from './EndGame.module.css'
 
-const Exit=(props)=>{
-    const {i,setAllPlayers,allPlayers,currentPlayers,setCurrentPlayers,setNext }=props;
+const EndGame=(props)=>{
+    const {i,setAllPlayers,currentPlayers,setCurrentPlayers }=props;
     const ExitPlayer=currentPlayers[i];
     const updatePlayers=JSON.parse(localStorage.getItem("allPlayers"));
 
     function update()
     {
-        setCurrentPlayers(currentPlayers.filter(element => element.name != ExitPlayer.name))
+        setCurrentPlayers(currentPlayers.filter((element) => element.name != ExitPlayer.name) )
     }
 
     function exit()
@@ -18,10 +18,8 @@ const Exit=(props)=>{
         updatePlayers.map((element)=>{
             if(element.name==ExitPlayer.name){
                 element.allScores.push(ExitPlayer.steps)
-                // if(element.topScore>ExitPlayer.steps)
-                //     element.topScore=ExitPlayer.steps;
                 element.allScores.map((e)=> {allSteps+=e; numOfGames++});
-                element.AverageSteps=(allSteps / numOfGames);
+                element.AverageSteps=Math.floor(allSteps / numOfGames);
             }
             return element;
         })
@@ -39,12 +37,10 @@ const Exit=(props)=>{
         let numOfGames=0;
         updatePlayers.map((g)=>{
             if(g.name==ExitPlayer.name){
-                g.allScores.push(ExitPlayer.steps)
-                allScoresTemp.push(`${g.allScores} `)
-                // if(ExitPlayer.steps<g.topScore)
-                //     g.topScore=ExitPlayer.steps;
+                g.allScores.push(` ${ExitPlayer.steps} `)
+                allScoresTemp.push(` ${g.allScores} `)
                 g.allScores.map((e)=> {allSteps+=e; numOfGames++});
-                g.AverageSteps=(allSteps / numOfGames);
+                g.AverageSteps=Math.floor(allSteps / numOfGames);
                 
             }   })
         localStorage.setItem("allPlayers" ,JSON.stringify(updatePlayers));
@@ -68,4 +64,4 @@ const Exit=(props)=>{
     )
 }
 
-export default Exit
+export default EndGame

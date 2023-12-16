@@ -4,7 +4,7 @@ import ShowActiveBoards from "../ShowActiveBoards/ShowActiveBoards.jsx"
 import style from "../AddPlayer/AddPlayer.module.css"
 import TopPlayers from "../TopPlayers/TopPlayers.jsx"
 
-const AddPlayer=(props)=>{
+const AddPlayer=()=>{
     const arrGamers = JSON.parse(localStorage.getItem("allPlayers"));
     const [allPlayers, setAllPlayers] = useState(arrGamers ? arrGamers : [])
     const [isAddNew, setIsAddNew] = useState(false);
@@ -16,8 +16,6 @@ const AddPlayer=(props)=>{
     const [mid,setMid] = useState([" ",120])
     const [max,setMax] = useState([' ',120])
     const [currentPlayers,setCurrentPlayers] = useState([])
-
-
     let isShow=false;
 
     function startGame()
@@ -69,7 +67,6 @@ const AddPlayer=(props)=>{
     }
     return(
         <>
-
         {!(isAddPlayers)&&<button className={style.addPlayerBtn} onClick={()=>addPlayer()}>add player</button>}
         <div className={style.allBoards}>
             {isAddNew ? currentPlayers.map((element,i) => (

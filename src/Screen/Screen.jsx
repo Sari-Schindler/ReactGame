@@ -4,13 +4,11 @@ import ShowActiveBoards from '../Components/ShowActiveBoards/ShowActiveBoards.js
 import style from '../Screen/Screen.module.css'
 
 
-function Screen() {
-  const [currentPlayers,setCurrentPlayers] = useState([])
-  
+function Screen() {  
   return (
     <>
     <div >
-      <AddPlayer currentPlayers={currentPlayers} setCurrentPlayers={setCurrentPlayers}/>
+      <AddPlayer/>
       </div>
     </>
     
