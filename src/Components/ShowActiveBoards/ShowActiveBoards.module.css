@@ -5,7 +5,7 @@
    background-color: lightblue;
    border:2px black solid;
    border-radius: 25px;
-   width: 25%;
+   width: 250px;
    height: 300px;
    margin: 2px;
    font-family: cursive;
@@ -17,6 +17,3 @@
    color: red;
 }
 
-.disable{
-   color: pink;
-}

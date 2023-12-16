@@ -1,0 +1,26 @@
+.exitBtn{
+    background-color: unset;
+    border-style: dashed;
+    border-color: palevioletred;
+    color: palevioletred;
+    border-width: 2px;
+    padding: 3px;
+    padding-top: 0px;
+    margin-top: 0px;
+}
+
+.ContinueBtn{
+    background-color: unset;
+    border-style: dashed;
+    border-color: palevioletred;
+    color: palevioletred;
+    border-width: 2px;
+    padding: 3px;
+}
+
+
+.winerP{
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+
+}

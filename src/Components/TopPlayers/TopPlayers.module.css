@@ -16,9 +16,37 @@
 .topPlayersP{
     font-family: cursive;
     font-size: 25px;
-    color: purple;
+    color: black;
+    justify-content: end;
+    display: flex;
+    margin: 0px;
+    padding: 0px;
+
+}
+
+.TopPlayersHeader{
+    font-family: cursive;
+    font-size: 25px;
+    color: black;
     font-weight: bold;
     justify-content: end;
     display: flex;
+    margin: 0px;
+}
+
+.TopDiv{
+    display: block;
+    justify-content: center;
 
 }
+/* .first{
+    color:rgb(11, 224, 143)
+}
+
+.second{
+    color: orange;
+}
+
+.third{
+    color: wheat;
+} */
