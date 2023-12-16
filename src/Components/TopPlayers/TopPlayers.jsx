@@ -12,7 +12,7 @@ const TopPlayers = (props) => {
             if (player.AverageSteps < _min[1]) {
                 _max = _mid;
                 _mid = _min;
-                _min = [` ${player.name}: `, player.AverageSteps]
+                _min =  [` ${player.name}: `, player.AverageSteps]
             }
             else if (player.AverageSteps < _mid[1]) {
                 _max = _mid;
@@ -38,7 +38,7 @@ const TopPlayers = (props) => {
                 <p className={style.TopPlayersHeader}>Top Players               -</p>
                 <div className={style.topPlayersP}>
                     {isShow && <div className={style.first}> first: {min[1]!=120? min: ' no '}</div>}
-                    {isShow && <div className={style.second}> second: {mid[1]!=120? mid : ` no `}</div>}
+                    {isShow && <div className={style.second}> second: {mid[1]!=120? mid :  ' no'}</div>}
                     {isShow &&  <div className={style.third}> third: {max[1]!=120? max : ' no '}</div>}
                 </div>
             </div>

@@ -13,7 +13,7 @@ const AddPlayer=()=>{
     const [isAddPlayers, setIsAddPlayers]=useState(false);
     const [iStartGame, setIStartGame]=useState(false);
     const [min,setMin] = useState([' ',120])
-    const [mid,setMid] = useState([" ",120])
+    const [mid,setMid] = useState([' ',120])
     const [max,setMax] = useState([' ',120])
     const [currentPlayers,setCurrentPlayers] = useState([])
     let isShow=false;

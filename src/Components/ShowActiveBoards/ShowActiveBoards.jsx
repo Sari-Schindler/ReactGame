@@ -10,8 +10,8 @@ const ShowActiveBoards=(props)=>{
             <div className={style.GamerBoard}>
                     <div>name: {currentPlayer.name}</div>
                     <div className={style.isAble}>is able:<div className={i==index? style.able: style.disable}>{i==index ? "true":"false"}</div></div>
+                    <div>your number is: {currentPlayer.number}</div>
                     <div>steps: {currentPlayer.steps}</div>
-                    <div>number: {currentPlayer.number}</div>
                     <div>score: {currentPlayer.allScores}</div>
                 <div>
                 {start && <StartGame

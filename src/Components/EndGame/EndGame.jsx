@@ -1,4 +1,3 @@
-import { useState } from "react";
 import style from './EndGame.module.css'
 
 const EndGame=(props)=>{
@@ -35,12 +34,12 @@ const EndGame=(props)=>{
         let allScoresTemp=[];
         let allSteps=0;
         let numOfGames=0;
-        updatePlayers.map((g)=>{
-            if(g.name==ExitPlayer.name){
-                g.allScores.push(` ${ExitPlayer.steps} `)
-                allScoresTemp.push(` ${g.allScores} `)
-                g.allScores.map((e)=> {allSteps+=e; numOfGames++});
-                g.AverageSteps=Math.floor(allSteps / numOfGames);
+        updatePlayers.map((player)=>{
+            if(player.name==ExitPlayer.name){
+                player.allScores.push(ExitPlayer.steps)
+                allScoresTemp.push(` ${player.allScores} `)
+                player.allScores.map((e)=> {allSteps+=e; numOfGames++});
+                player.AverageSteps=Math.floor(allSteps / numOfGames);
                 
             }   })
         localStorage.setItem("allPlayers" ,JSON.stringify(updatePlayers));
