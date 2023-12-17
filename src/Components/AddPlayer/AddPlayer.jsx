@@ -1,4 +1,4 @@
-import { useState } from "react"
+import React, { useState } from 'react';
 import gamer from "../../gamer"
 import ShowActiveBoards from "../ShowActiveBoards/ShowActiveBoards.jsx"
 import style from "../AddPlayer/AddPlayer.module.css"

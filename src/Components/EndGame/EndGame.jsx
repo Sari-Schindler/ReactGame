@@ -1,10 +1,11 @@
 import style from './EndGame.module.css'
-
+import React, { useState } from 'react';
 const EndGame=(props)=>{
     const {i,setAllPlayers,currentPlayers,setCurrentPlayers }=props;
     const ExitPlayer=currentPlayers[i];
     const updatePlayers=JSON.parse(localStorage.getItem("allPlayers"));
-
+    const [, updateState] = useState();
+    const forceUpdate = React.useCallback(() => updateState({}), []);
     function update()
     {
         setCurrentPlayers(currentPlayers.filter((element) => element.name != ExitPlayer.name) )
@@ -25,6 +26,7 @@ const EndGame=(props)=>{
         update()
         localStorage.setItem("allPlayers" ,JSON.stringify(updatePlayers));
         setAllPlayers(updatePlayers)
+        forceUpdate();
         if(currentPlayers.length == 1)
             (alert("you finish the game"));
     }
@@ -51,6 +53,7 @@ const EndGame=(props)=>{
             }
             return player;
         })) 
+        forceUpdate();
     }
     return(
         <>

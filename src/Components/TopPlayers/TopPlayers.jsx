@@ -1,4 +1,4 @@
-import { useEffect } from "react"
+import React, { useEffect } from "react"
 import style from '../TopPlayers/TopPlayers.module.css'
 
 const TopPlayers = (props) => {
