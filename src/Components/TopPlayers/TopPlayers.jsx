@@ -29,7 +29,7 @@ const TopPlayers = (props) => {
 
     useEffect(() => {
         isShow && setTop()
-    }, [isShow])
+    }, [allPlayers])
 
 
     return (
