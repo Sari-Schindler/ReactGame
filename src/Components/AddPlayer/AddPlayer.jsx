@@ -73,7 +73,7 @@ const AddPlayer=()=>{
              <ShowActiveBoards setAllPlayers={setAllPlayers} key={i} i={i} index={index} setIndex={setIndex} start={start} currentPlayer={element} currentPlayers={currentPlayers} setCurrentPlayers={setCurrentPlayers} allPlayers={allPlayers}/> 
              )) : null}
              
-             {iStartGame &&<TopPlayers min={min} setMin={setMin} mid={mid} setMid={setMid} max={max} setMax={setMax} allPlayers={allPlayers} isShow/>}
+             {iStartGame &&<TopPlayers min={min} setMin={setMin} mid={mid} setMid={setMid} max={max} setMax={setMax} allPlayers={allPlayers} currentPlayers={currentPlayers} isShow/>}
 
         </div>
 

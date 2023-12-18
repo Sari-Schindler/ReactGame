@@ -2,8 +2,7 @@ import React, { useEffect } from "react"
 import style from '../TopPlayers/TopPlayers.module.css'
 
 const TopPlayers = (props) => {
-    const { allPlayers } = props;
-    const { min, setMin, mid, setMid, max, setMax, isShow } = props;
+    const {allPlayers,currentPlayers, min, setMin, mid, setMid, max, setMax, isShow } = props;
 
     function setTop() {
         let _min = min, _mid = mid, _max = max;
@@ -14,11 +13,11 @@ const TopPlayers = (props) => {
                 _mid = _min;
                 _min =  [` ${player.name}: `, player.AverageSteps]
             }
-            else if (player.AverageSteps < _mid[1]) {
+            else if (player.AverageSteps < _mid[1] &&  _min[0]!= ` ${player.name}:`) {
                 _max = _mid;
                 _mid = [` ${player.name}: `, player.AverageSteps]
             }
-            else if (player.AverageSteps < _max[1]) {
+            else if (player.AverageSteps < _max[1] && _mid[0]!=` ${player.name}:`) {
                 _max = [` ${player.name}: `, player.AverageSteps]
             }
         }))
@@ -29,7 +28,7 @@ const TopPlayers = (props) => {
 
     useEffect(() => {
         isShow && setTop()
-    }, [allPlayers])
+    }, [currentPlayers])
 
 
     return (
