@@ -19,8 +19,8 @@ const EndGame=(props)=>{
             }
             return element;
         })
-        setCurrentPlayers(currentPlayers.filter((element) => element.name != ExitPlayer.name) )
         localStorage.setItem("allPlayers" ,JSON.stringify(updatePlayers));
+        setCurrentPlayers(currentPlayers.filter((element) => element.name != ExitPlayer.name) )
         setAllPlayers(updatePlayers)
         // forceUpdate();
         if(currentPlayers.length == 1)
