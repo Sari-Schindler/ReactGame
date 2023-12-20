@@ -12,9 +12,7 @@ const AddPlayer=()=>{
     const [index,setIndex]=useState(0)
     const [isAddPlayers, setIsAddPlayers]=useState(false);
     const [iStartGame, setIStartGame]=useState(false);
-    const [min,setMin] = useState([' ',120])
-    const [mid,setMid] = useState([' ',120])
-    const [max,setMax] = useState([' ',120])
+    const [tops,setTops] =useState([])
     const [currentPlayers,setCurrentPlayers] = useState([])
     let isShow=false;
 
@@ -73,7 +71,7 @@ const AddPlayer=()=>{
              <ShowActiveBoards setAllPlayers={setAllPlayers} key={i} i={i} index={index} setIndex={setIndex} start={start} currentPlayer={element} currentPlayers={currentPlayers} setCurrentPlayers={setCurrentPlayers} allPlayers={allPlayers}/> 
              )) : null}
              
-             {iStartGame &&<TopPlayers min={min} setMin={setMin} mid={mid} setMid={setMid} max={max} setMax={setMax} allPlayers={allPlayers} currentPlayers={currentPlayers} isShow/>}
+             {iStartGame &&<TopPlayers tops={tops}  setTops={setTops} allPlayers={allPlayers} currentPlayers={currentPlayers} isShow/>}
 
         </div>
 

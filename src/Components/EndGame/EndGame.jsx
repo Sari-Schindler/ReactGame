@@ -45,6 +45,7 @@ const EndGame=(props)=>{
                 
             }   })
         localStorage.setItem("allPlayers" ,JSON.stringify(updatePlayers));
+        setAllPlayers(updatePlayers);
         setCurrentPlayers(currentPlayers.map((player)=>{
             if(player.name==ExitPlayer.name){
                 player.steps=0;
