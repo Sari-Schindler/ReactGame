@@ -13,7 +13,7 @@ const AddPlayer=()=>{
     const [isAddPlayers, setIsAddPlayers]=useState(false);
     const [iStartGame, setIStartGame]=useState(false);
     const [currentPlayers,setCurrentPlayers] = useState([])
-    let isShow=false;
+    const isShow=false;
 
     function startGame()
     {
@@ -44,8 +44,7 @@ const AddPlayer=()=>{
                     wantedGamer=player;
                     isNewPlayer = false;
                 }
-          
-                return player
+                return player;
             })
 
             let isCurrentPlayer=currentPlayers.find((current) => current.name == newName )

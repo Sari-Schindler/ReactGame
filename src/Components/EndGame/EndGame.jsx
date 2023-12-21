@@ -4,8 +4,6 @@ const EndGame=(props)=>{
     const {i,setAllPlayers,currentPlayers,setCurrentPlayers }=props;
     const ExitPlayer=currentPlayers[i];
     const updatePlayers=JSON.parse(localStorage.getItem("allPlayers"));
-    // const [, updateState] = useState();
-    // const forceUpdate = React.useCallback(() => updateState({}), []);
 
     function exit()
     {
@@ -22,7 +20,6 @@ const EndGame=(props)=>{
         localStorage.setItem("allPlayers" ,JSON.stringify(updatePlayers));
         setCurrentPlayers(currentPlayers.filter((element) => element.name != ExitPlayer.name) )
         setAllPlayers(updatePlayers)
-        // forceUpdate();
         if(currentPlayers.length == 1)
             (alert("you finish the game"));
     }
@@ -49,8 +46,7 @@ const EndGame=(props)=>{
                 player.allScores=allScoresTemp;
             }
             return player;
-        })) 
-        // forceUpdate();
+        }))
     }
     return(
         <>
