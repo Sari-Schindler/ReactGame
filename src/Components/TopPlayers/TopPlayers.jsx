@@ -23,8 +23,8 @@ const TopPlayers = (props) => {
                 {props.tops.map((player, key) =>
                 player.AverageSteps != 1000?
                     (<div key={key}>
-                        <span>name: {player.name} </span>
-                        <span>average: {player.AverageSteps} </span>
+                        <span>  name: {player.name} </span>
+                        <span> average: {player.AverageSteps}, </span>
                     </div>):
                 (<></>)
                 )}
