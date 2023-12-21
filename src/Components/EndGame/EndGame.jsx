@@ -34,7 +34,6 @@ const EndGame=(props)=>{
                 allScoresTemp.push(` ${player.allScores} `)
                 player.allScores.map((e)=> {allSteps+=e; numOfGames++});
                 player.AverageSteps=Math.floor(allSteps / numOfGames);
-                
             }   })
         localStorage.setItem("allPlayers" ,JSON.stringify(updatePlayers));
         setAllPlayers(updatePlayers);

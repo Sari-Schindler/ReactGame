@@ -13,7 +13,7 @@ const AddPlayer=()=>{
     const [isAddPlayers, setIsAddPlayers]=useState(false);
     const [iStartGame, setIStartGame]=useState(false);
     const [currentPlayers,setCurrentPlayers] = useState([])
-    const isShow=false;
+    let isShow=false;
 
     function startGame()
     {
@@ -65,8 +65,8 @@ const AddPlayer=()=>{
         <>
         {!(isAddPlayers)&&<button className={style.addPlayerBtn} onClick={()=>addPlayer()}>add player</button>}
         <div className={style.allBoards}>
-            {isAddNew ? currentPlayers.map((element,i) => (
-             <ShowActiveBoards setAllPlayers={setAllPlayers} key={i} i={i} index={index} setIndex={setIndex} start={start} currentPlayer={element} currentPlayers={currentPlayers} setCurrentPlayers={setCurrentPlayers} allPlayers={allPlayers}/> 
+            {isAddNew ? currentPlayers.map((player,i) => (
+             <ShowActiveBoards setAllPlayers={setAllPlayers} key={i} i={i} index={index} setIndex={setIndex} start={start} currentPlayer={player} currentPlayers={currentPlayers} setCurrentPlayers={setCurrentPlayers} allPlayers={allPlayers}/> 
              )) : null}
              {iStartGame &&<TopPlayers allPlayers={allPlayers} currentPlayers={currentPlayers} isShow/>}
         </div>

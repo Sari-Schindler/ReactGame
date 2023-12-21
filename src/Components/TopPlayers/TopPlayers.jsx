@@ -7,7 +7,6 @@ const TopPlayers = (props) => {
     const {allPlayers,isShow} = props;
     function setTop() {
         allPlayers.sort((a,b)=>a.AverageSteps-b.AverageSteps);
-        console.log(allPlayers);
         setTops(allPlayers.slice(0, allPlayers.length > 3 ? 3 : allPlayers.length));
     }
 
