@@ -68,11 +68,8 @@ const AddPlayer=()=>{
             {isAddNew ? currentPlayers.map((element,i) => (
              <ShowActiveBoards setAllPlayers={setAllPlayers} key={i} i={i} index={index} setIndex={setIndex} start={start} currentPlayer={element} currentPlayers={currentPlayers} setCurrentPlayers={setCurrentPlayers} allPlayers={allPlayers}/> 
              )) : null}
-             
              {iStartGame &&<TopPlayers allPlayers={allPlayers} currentPlayers={currentPlayers} isShow/>}
-
         </div>
-
         {!iStartGame && <button className={style.startGameBtn} onClick={()=>startGame()}>start game</button>}
         </>
     )

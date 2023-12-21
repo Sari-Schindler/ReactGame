@@ -3,8 +3,7 @@ import StartGame from '../StartGame/StartGame'
 
 const ShowActiveBoards=(props)=>{
   const{index,setIndex ,allPlayers,setAllPlayers,currentPlayer,currentPlayers,setCurrentPlayers,start,i} = props;
-        
-  
+          
         return(
             <>
             <div className={style.GamerBoard}>

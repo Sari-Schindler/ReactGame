@@ -15,7 +15,6 @@ const TopPlayers = (props) => {
         isShow && setTop()
     }, [allPlayers])
 
-
     return (
         <>
             <div className={style.TopDiv}>

@@ -24,7 +24,6 @@ const EndGame=(props)=>{
             (alert("you finish the game"));
     }
 
-
     function continuePlaying(){
         let allScoresTemp=[];
         let allSteps=0;
@@ -48,6 +47,7 @@ const EndGame=(props)=>{
             return player;
         }))
     }
+    
     return(
         <>
         <div>
